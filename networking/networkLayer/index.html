@@ -1,0 +1,2234 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Network Layer - eNotes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="eNotes" class="md-header-nav__button md-logo" aria-label="eNotes">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            eNotes
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Network Layer
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../AWS/" class="md-tabs__link">
+          AWS
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Excalidraw/Drawing%202022-12-16%2010.08.40.excalidraw/" class="md-tabs__link">
+          Excalidraw
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../competitive-programming/" class="md-tabs__link">
+          Competitive programming
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../data-science/" class="md-tabs__link">
+          Data science
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../flutter/" class="md-tabs__link">
+          Flutter
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../hci/" class="md-tabs__link">
+          Hci
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../java/" class="md-tabs__link">
+          Java
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../" class="md-tabs__link md-tabs__link--active">
+          Networking
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../operating-system/" class="md-tabs__link">
+          Operating system
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../private/private-note/" class="md-tabs__link">
+          Private
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../spark/" class="md-tabs__link">
+          Spark
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../web-developement/" class="md-tabs__link">
+          Web developement
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="eNotes" class="md-nav__button md-logo" aria-label="eNotes">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    eNotes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      AWS
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="AWS" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        AWS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../AWS/" title="Cloud Computing" class="md-nav__link">
+      Cloud Computing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../AWS/aws-cloudm/" title="Aws cloudm" class="md-nav__link">
+      Aws cloudm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../AWS/aws_cloud/" title="why cloud ?" class="md-nav__link">
+      why cloud ?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Services
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Services" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../AWS/services/pass/" title="Platform as a service" class="md-nav__link">
+      Platform as a service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../AWS/services/sass/" title="Sass" class="md-nav__link">
+      Sass
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Excalidraw
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Excalidraw" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Excalidraw
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Excalidraw/Drawing%202022-12-16%2010.08.40.excalidraw/" title="Drawing 2022 12 16 10.08.40.excalidraw" class="md-nav__link">
+      Drawing 2022 12 16 10.08.40.excalidraw
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Competitive programming
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Competitive programming" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Competitive programming
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/" title="Competitive Programming" class="md-nav__link">
+      Competitive Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/bitwise/" title="Bit manipulation" class="md-nav__link">
+      Bit manipulation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Stl
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Stl" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Stl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/stl/algorithm/" title="Algorithms in STL" class="md-nav__link">
+      Algorithms in STL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/stl/vector/" title="vector" class="md-nav__link">
+      vector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Trees
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Trees" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Trees
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/trees/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Trie
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Trie" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Trie
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../competitive-programming/trie/basic/" title="Basic" class="md-nav__link">
+      Basic
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Data science
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Data science" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Data science
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data-science/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data-science/sllaybus/" title="Syllabus" class="md-nav__link">
+      Syllabus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data-science/unit1/" title="introduction to R" class="md-nav__link">
+      introduction to R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data-science/unit2/" title="Data Processing" class="md-nav__link">
+      Data Processing
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Flutter
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Flutter" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Flutter
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/" title="Flutter" class="md-nav__link">
+      Flutter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/1_connect_physical%20device/" title="Deploying Flutter app to an Andriod phone" class="md-nav__link">
+      Deploying Flutter app to an Andriod phone
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/2_widgets/" title="Widgets" class="md-nav__link">
+      Widgets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/3_insertImage/" title="Flutter" class="md-nav__link">
+      Flutter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Dart
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Dart" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Dart
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/dart/" title="Dart" class="md-nav__link">
+      Dart
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/dart/class/" title="Class" class="md-nav__link">
+      Class
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/dart/dart/" title="Basics" class="md-nav__link">
+      Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flutter/dart/pakages/" title="importing libraries from packages" class="md-nav__link">
+      importing libraries from packages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Hci
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Hci" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Hci
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hci/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hci/unti1/" title="HCI" class="md-nav__link">
+      HCI
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Java
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Java" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java/basic/" title="Basic" class="md-nav__link">
+      Basic
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      Networking
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Networking" class="md-nav__link">
+      Networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Network Layer
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Network Layer" class="md-nav__link md-nav__link--active">
+      Network Layer
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding-table" class="md-nav__link">
+    Forwarding table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-circuit-and-datagram" class="md-nav__link">
+    Virtual-circuit and datagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-of-a-router" class="md-nav__link">
+    Internal of a Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching" class="md-nav__link">
+    Switching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip--forwarding-and-addressing-in-the-internet" class="md-nav__link">
+    IP : Forwarding and addressing in the Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-datagram-fragmentation" class="md-nav__link">
+    IP Datagram Fragmentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv4-addressing" class="md-nav__link">
+    IPv4 Addressing
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv4 Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-range-of-ip-address-is-obtain" class="md-nav__link">
+    how range of ip address is obtain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaning-a-host-address-the-dynamic-host-configuration-protocol" class="md-nav__link">
+    Obtaning a Host Address: The Dynamic Host Configuration Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhpc-is-a-4-step-process" class="md-nav__link">
+    DHPC is a 4 step process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortcoming" class="md-nav__link">
+    Shortcoming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-address-translation-nat" class="md-nav__link">
+    Network Address Translation (NAT)
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Address Translation (NAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upnp-universal-plug-and-play" class="md-nav__link">
+    UPnP Universal Plug and Play
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internet-control-message-protocol" class="md-nav__link">
+    Internet Control Message Protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    IPv6
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-will-public-internet-which-is-based-on-ipv4-transitioned-to-ipv6" class="md-nav__link">
+    how will public Internet, which is based on IPv4 transitioned to IPV6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-brief-foray-into-ip-security" class="md-nav__link">
+    A brief Foray into IP Security
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../osi/" title="OSI Model" class="md-nav__link">
+      OSI Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9-4" type="checkbox" id="nav-9-4">
+    
+    <label class="md-nav__link" for="nav-9-4">
+      Computer network
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Computer network" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Computer network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../computer-network/unit1/" title="Unit 1" class="md-nav__link">
+      Unit 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../computer-network/unit2/" title="Unit 2" class="md-nav__link">
+      Unit 2
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Operating system
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Operating system" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Operating system
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operating-system/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Private
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Private" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Private
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../private/private-note/" title="Private Stuff" class="md-nav__link">
+      Private Stuff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../private/todo/" title="Todo" class="md-nav__link">
+      Todo
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Spark
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Spark" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Spark
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spark/" title="Spark" class="md-nav__link">
+      Spark
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spark/unit1/" title="Spark" class="md-nav__link">
+      Spark
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      Web developement
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Web developement" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Web developement
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web-developement/" title="Web Developement" class="md-nav__link">
+      Web Developement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web-developement/JavaScript/" title="Basics of JavaScript" class="md-nav__link">
+      Basics of JavaScript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web-developement/UsefulWebsites/" title="some useful websites" class="md-nav__link">
+      some useful websites
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web-developement/bootstrap/" title="Bootstap" class="md-nav__link">
+      Bootstap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../web-developement/principalOfDesign/" title="Pillars" class="md-nav__link">
+      Pillars
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding-table" class="md-nav__link">
+    Forwarding table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-circuit-and-datagram" class="md-nav__link">
+    Virtual-circuit and datagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internal-of-a-router" class="md-nav__link">
+    Internal of a Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching" class="md-nav__link">
+    Switching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip--forwarding-and-addressing-in-the-internet" class="md-nav__link">
+    IP : Forwarding and addressing in the Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-datagram-fragmentation" class="md-nav__link">
+    IP Datagram Fragmentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv4-addressing" class="md-nav__link">
+    IPv4 Addressing
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv4 Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-range-of-ip-address-is-obtain" class="md-nav__link">
+    how range of ip address is obtain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaning-a-host-address-the-dynamic-host-configuration-protocol" class="md-nav__link">
+    Obtaning a Host Address: The Dynamic Host Configuration Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhpc-is-a-4-step-process" class="md-nav__link">
+    DHPC is a 4 step process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortcoming" class="md-nav__link">
+    Shortcoming
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-address-translation-nat" class="md-nav__link">
+    Network Address Translation (NAT)
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Address Translation (NAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upnp-universal-plug-and-play" class="md-nav__link">
+    UPnP Universal Plug and Play
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internet-control-message-protocol" class="md-nav__link">
+    Internet Control Message Protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    IPv6
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-will-public-internet-which-is-based-on-ipv4-transitioned-to-ipv6" class="md-nav__link">
+    how will public Internet, which is based on IPv4 transitioned to IPV6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-brief-foray-into-ip-security" class="md-nav__link">
+    A brief Foray into IP Security
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="network-layer">Network Layer<a class="headerlink" href="#network-layer" title="Permanent link">#</a></h1>
+<ul>
+<li><strong>Switches</strong> - link layer devices</li>
+<li><strong>Routers</strong> - network layer devices<br />
+Forwarding Table</li>
+</ul>
+<h2 id="forwarding-table">Forwarding table<a class="headerlink" href="#forwarding-table" title="Permanent link">#</a></h2>
+<ul>
+<li>Router has forwarding table</li>
+<li>A router forwards packet by examining the value in header field  of arriving packet</li>
+<li>Use this header value to index into the router’s forwarding table.</li>
+<li>In table, value for that header indicates the router’s outgoing link interface to<br />
+which that packet is to be forwarded.</li>
+<li>Depending network-layer protocol,the header value could be the destination address or an indication of connection to which the packet belongs.</li>
+</ul>
+<p><img alt="routing table" src="../img/networkLayer/routing.png" /></p>
+<h2 id="virtual-circuit-and-datagram">Virtual-circuit and datagram<a class="headerlink" href="#virtual-circuit-and-datagram" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Virtual-circuit (VC)networks</strong></th>
+<th><strong>Datagram Networks</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host to host i.e handshaking</td>
+<td>Connection service</td>
+</tr>
+<tr>
+<td>VC setup: Each time a new connection is establish ,  new connection entry in forwarding table , Connection is released, entry removed from table.</td>
+<td>No VC setup Each time end system when sends a packet It stampas packet with destination(end system) address Maintain info in forwarding table</td>
+</tr>
+<tr>
+<td>Light headed</td>
+<td>Over headed</td>
+</tr>
+<tr>
+<td><strong>signaling protocols:</strong> Message protocol for - sending initiating and terminate message to setup VC.</td>
+<td>When packet arrives at router it uses , packet’s destination address to forward packet</td>
+</tr>
+<tr>
+<td>Determine the path(<em>series of links and routers</em>) between sender and receiver.</td>
+<td><strong>longest Prefix matching algorithm</strong> is used with destination address in a router to find the link interface</td>
+</tr>
+<tr>
+<td>Determine VC number for each link along the path</td>
+<td><strong>NO connection state information</strong> is stored</td>
+</tr>
+<tr>
+<td>Reserve network resources (bandwidth)along the path</td>
+<td>Resources are on-demand</td>
+</tr>
+<tr>
+<td>Packet flow the same path</td>
+<td>Different packets may flow different paths</td>
+</tr>
+<tr>
+<td>Packets Arrives in order</td>
+<td>Packets arrive out of order</td>
+</tr>
+<tr>
+<td>Less Delay</td>
+<td>More Delay</td>
+</tr>
+<tr>
+<td>Eg : ATM ( Asynchronous transfer mode)</td>
+<td>Eg : Internet</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note : connection oriented service in transport layer different from network layer connection system</em></p>
+<p><img alt="vc" src="../img/networkLayer/vc.png" /><br />
+<img alt="datagram" src="../img/networkLayer/datagram.png" /></p>
+<h2 id="internal-of-a-router">Internal of a Router<a class="headerlink" href="#internal-of-a-router" title="Permanent link">#</a></h2>
+<p><strong>Function of router</strong></p>
+<ul>
+<li><strong>forwarding</strong></li>
+<li><strong>routing</strong></li>
+</ul>
+<p><img alt="router" src="../img/networkLayer/routerArchitecture.png" /></p>
+<p><strong>Input ports</strong></p>
+<ul>
+<li>packets are admitted into the router</li>
+<li>terminate physical link layer at the router</li>
+<li>lookup function performed at input port</li>
+<li>forwarding table consulted here to determine which output port for incoming packets</li>
+</ul>
+<p><strong>Switching fabric</strong></p>
+<ul>
+<li>connects the router's input ports to its output ports.</li>
+<li>completely contained within the router</li>
+<li>its like network inside a network router</li>
+</ul>
+<p><strong>Output ports</strong></p>
+<ul>
+<li>stores packets received from switching fabric</li>
+<li>and transmits to out going layer by performing link-layer and physical-layer function</li>
+</ul>
+<p><strong>Routing processor</strong></p>
+<ul>
+<li>execute routing protocols</li>
+<li>maintains routing tables</li>
+<li>computes the forward table for router</li>
+<li>perform network management functions</li>
+</ul>
+<h2 id="switching">Switching<a class="headerlink" href="#switching" title="Permanent link">#</a></h2>
+<p>ways to do switching(forwarding)</p>
+<ul>
+<li>Switching via memory</li>
+<li>Switching via bus</li>
+<li>Switching via interconnection network</li>
+</ul>
+<h2 id="ip--forwarding-and-addressing-in-the-internet">IP : Forwarding and addressing in the Internet<a class="headerlink" href="#ip--forwarding-and-addressing-in-the-internet" title="Permanent link">#</a></h2>
+<p>3 major component of Internet's network layer</p>
+<ul>
+<li>IP protocol</li>
+<li>routing protocol</li>
+<li>facility to report errors, ICMP</li>
+</ul>
+<p><em>network layer packet is referred as datagram</em></p>
+<p><strong>syntax and semantics of IPv4 datagram format</strong></p>
+<p><img alt="ipv4 format" src="../img/networkLayer/ipv4format.png" /></p>
+<p><em><strong>Version number</strong></em></p>
+<ul>
+<li>4 bit, IP protocol version of datagram</li>
+<li>helps router to determine how to interpret reminder of IP datagram</li>
+<li>different version of IP use different datagram format</li>
+</ul>
+<p><em><strong>Header length</strong></em></p>
+<ul>
+<li>20 byte header, determine where in IP datagram the data actually begin</li>
+</ul>
+<p><em><strong>Type of service</strong></em></p>
+<ul>
+<li>allow different type of IP datagram(<em>eg real time datagram , non-real time datagram</em> )</li>
+</ul>
+<p><strong><em>Data gram length</em></strong></p>
+<ul>
+<li>total length of IP datagram(header+data)</li>
+<li>16 bits</li>
+</ul>
+<p><em><strong>Identifier,flags,fragmentation offset</strong></em></p>
+<ul>
+<li>deal with IP fragmentation</li>
+<li>IPv6 doesn't allow for fragmentation at routers</li>
+</ul>
+<p><em><strong>Time-to-live</strong></em></p>
+<ul>
+<li>ensure that datagram do not circulate forever in network</li>
+<li>decremented by 1 each time datagram is processed by a router</li>
+<li>0 TTL - datagram must be drop</li>
+</ul>
+<p><em><strong>Protocol</strong></em></p>
+<ul>
+<li>used when datagram reaches destination</li>
+<li>protocol number indicate the specific transport-layer protocol to which the data portion of this datagram should be passed</li>
+<li>eg: 6-TCP,17-UDP</li>
+<li>binds network and transport layer</li>
+</ul>
+<p><strong><em>Header checksum</em></strong></p>
+<ul>
+<li>detect bit errors in received IP datagram</li>
+<li>if checksum carried by datagram != computed checksum then router display <em>discard datagram</em></li>
+</ul>
+<p><strong><em>Source and destination IP address</em></strong></p>
+<p><strong><em>options</em></strong></p>
+<ul>
+<li>allow ip header to be extended</li>
+</ul>
+<p><strong><em>Data</em></strong></p>
+<ul>
+<li>contains transport layer segment (TCP or UDP or ICMP massages )</li>
+</ul>
+<h2 id="ip-datagram-fragmentation">IP Datagram Fragmentation<a class="headerlink" href="#ip-datagram-fragmentation" title="Permanent link">#</a></h2>
+<ul>
+<li>some protocol carry big gram some carry small datagrams</li>
+<li>that is different protocol has different <em>maximum transmission unit</em>.</li>
+</ul>
+<p><strong>what cause data fragmentation ?</strong></p>
+<ul>
+<li>each links along the route between sender, destination can use different link-layer protocol</li>
+<li>and each of these link can have different <code>MTU</code></li>
+<li>eg: router receive an IP datagram from one link- check forwarding table choose the outgoing link , and find that <code>MTU</code> of this link is smaller than length of IP datagram.</li>
+</ul>
+<p><strong>fragmentation</strong></p>
+<ul>
+<li>Fragment data in IP datagram into two or more smaller ip datagram,</li>
+<li>encapsulate each of these smaller IP datagram in a separate link-layer frame</li>
+<li>send these frame over outgoing link</li>
+<li>each of these smaller datagram is referred as <em>fragment</em></li>
+</ul>
+<p><strong>points</strong></p>
+<ul>
+<li>fragments needs to reassemble before reaching transport layer at destination</li>
+<li>destination host reassembles the fragments</li>
+<li>destination host examine the(<em>identification flag , fragmentation offset</em>) identification number of datagrams stamped by sending host</li>
+<li>IP is unreliable - one or more fragment won't arrive at destination</li>
+<li>so , last fragment is flag=0,other marked as flag =1</li>
+<li>if more that one or more doesn't arrive, incomplete datagram is discarded</li>
+<li>TCP will recover this loss by retransmitting data by source</li>
+</ul>
+<p><strong>drawback</strong></p>
+<ul>
+<li>complicate routers and end system</li>
+<li>can be used to create lethal DoS attacks, hacker send series of unexpected fragments eg: <em>Jolt2 attack</em></li>
+</ul>
+<p><img alt="fragmentation" src="../img/networkLayer/fragmentation.png" /></p>
+<p><img alt="fragment table" src="../img/networkLayer/IpfragmentTabel.png" /></p>
+<h2 id="ipv4-addressing">IPv4 Addressing<a class="headerlink" href="#ipv4-addressing" title="Permanent link">#</a></h2>
+<p><strong>interface</strong></p>
+<ul>
+<li>The boundary between the router and any of its link</li>
+<li>router have multiple links therefore have multiple interface</li>
+<li>every router and host, receiving and sending datagram, therefore every interface should have IP address.</li>
+</ul>
+<p><strong>IP Address</strong></p>
+<ul>
+<li>32 bit long(4 bytes) - 2^32 possible ip address - 4billion</li>
+<li>written dotted-decimal-notation</li>
+<li>IP address 193.32.216.9 - 8bit.8bit.8bit.8bit</li>
+<li>each interface of router and host have unique IP address</li>
+</ul>
+<p><strong><em>subnet</em></strong>- interconnecting 3 host interface (fig 4.15)</p>
+<p><strong><em>subnet mask</em></strong></p>
+<ul>
+<li>IP addressing assigns an address to this<br />
+subnet: 223.1.1.0/24, where the /24 notation, sometimes known as a <code>subnet mask</code></li>
+<li>The subnet 223.1.1.0/24 consists of three host interfaces :<br />
+(223.1.1.1, 223.1.1.2, and 223.1.1.3) <br><br />
+one router interface :(223.1.1.4).</li>
+</ul>
+<p><img alt="subnet" src="../img/networkLayer/subnet1.png" /><br />
+<img alt="subnet" src="../img/networkLayer/subnet2.png" /></p>
+<p><strong><em>CIDR</em></strong><br />
+internet's address assignment strategy is known as <code>Classless Interdomain Routing</code><br />
+<em>a.b.c.d/x</em> <br><br />
+<em>x</em> : no of bits in first part of address <br><br />
+<em>x</em> most significant bits referred as <strong><em>prefix</em></strong></p>
+<p>organisation assigned a range of address with comman prefix.IP address of devices within the organisation share comman prefix.</p>
+<p><strong><em>classful addressing</em></strong><br />
+before CIDR was adopted,network portions of an IP address were constrained to be 8, 16, or 24 bits in length<br><br />
+8 - class A <br><br />
+16- class B <br><br />
+24- class C <br><br />
+subnet portion : 1,2,3 bits long <br><br />
+class C (/24) subnet could accommodate only up to 2^8 – 2 = 254 hosts</p>
+<p><strong><em>broadcast address</em></strong></p>
+<p>IP broadcast address 255.255.255.255.<br />
+When a host sends a datagram with destination address 255.255.255.255, the message is delivered to all hosts on the same subnet.</p>
+<h3 id="how-range-of-ip-address-is-obtain"><strong>how range of ip address is obtain</strong><a class="headerlink" href="#how-range-of-ip-address-is-obtain" title="Permanent link">#</a></h3>
+<ul>
+<li>network admin contact ISP</li>
+<li>IP address are managed under the authority of  ICANN (Internet Corporation for Assigned Name and numbers)</li>
+<li>ICANN - assign ip adress as well as manage DNS servers</li>
+</ul>
+<h3 id="obtaning-a-host-address-the-dynamic-host-configuration-protocol"><strong>Obtaning a Host Address: The Dynamic Host Configuration Protocol</strong><a class="headerlink" href="#obtaning-a-host-address-the-dynamic-host-configuration-protocol" title="Permanent link">#</a></h3>
+<ul>
+<li>once organization got addresses, it assign to host and routers interface</li>
+<li><code>DHPC</code>allows a host to obtain IP address automatically</li>
+<li>network admin can configure DHCP so that given host receives the same IP address each time it connect to the network</li>
+<li>or host may assign <em>temporary IP address</em> , it will be different each time host connect to network</li>
+<li>DHCP allows host to learn info such as its <br></li>
+<li>subnet mask ,</li>
+<li>the address of its first top router(default gateway)</li>
+<li>address of local DNS server</li>
+<li>also refer as <strong>plug play protocol</strong> : ability to automate network-related aspects of connecting host into a network</li>
+<li>used in residential Internet access network , host join and leaves network frequently</li>
+<li>DHCP is ideally suited for the situation where many users are coming and going and addresses are needed for limited amount of time</li>
+<li>DHCP is a client server protocol</li>
+<li>each subnet has a DHCP server.If no server present on the subnet</li>
+<li>DHPC relay agent that knows the address of DHPC server</li>
+</ul>
+<p><img alt="DHPC" src="../img/networkLayer/DHPC.png" /></p>
+<h3 id="dhpc-is-a-4-step-process"><strong>DHPC is a 4 step process</strong><a class="headerlink" href="#dhpc-is-a-4-step-process" title="Permanent link">#</a></h3>
+<p><img alt="process" src="../img/networkLayer/DHPC_process.png" /></p>
+<p><strong>DHPC server discovery</strong></p>
+<ul>
+<li>First message is generated the communication between server and client</li>
+<li>message sent by client in-order to discover whether any DHPC server is present or not</li>
+<li>message is broadcasted</li>
+</ul>
+<p><strong>DHPC server offers</strong></p>
+<ul>
+<li>server respond to host in this message specifying unleashed Ip address and other TCP info</li>
+<li>message is broadcasted by server</li>
+<li>size of message 342 bytes</li>
+<li>if more than one DHPC server present client accept first DHCP offer message it receive</li>
+<li>serve Id is specified in the packet</li>
+</ul>
+<p><strong>DHPC request</strong></p>
+<ul>
+<li>the newly arrive client will chose from among on or more offers and respond to selected offer with DHCP request message</li>
+<li>echoing back config parameters</li>
+</ul>
+<p><strong>DHPC ACK</strong></p>
+<ul>
+<li>server respond to DHCP request message with DHPC ACK message , confirming request parameters</li>
+</ul>
+<p>Once client revives DHCP ACK interaction in complete<br />
+client can use DHCP-allocated IP address for the lease duration</p>
+<h3 id="shortcoming">Shortcoming<a class="headerlink" href="#shortcoming" title="Permanent link">#</a></h3>
+<ul>
+<li>new IP address is obtain from DHCP each time connect to new subnet<br />
+TCP connection to a remote app can be maintained as mobile node moves between subnets</li>
+</ul>
+<h2 id="network-address-translation-nat">Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Permanent link">#</a></h2>
+<ul>
+<li>IT's a way to map multiple local private addresses to public before transferring the information</li>
+<li>Organization that want multiple devices to employ single ip address use NAT</li>
+<li>eg: home routers</li>
+<li>let say ,request made in web from your laptop , request send to router in form of packet.</li>
+<li>router changes outgoing private local ip address to public address.</li>
+<li>because the receiving server won't know where to send information back. As device iP is private local .</li>
+<li>NAT behaves like a single device with a single ip , for outside world</li>
+</ul>
+<p><img alt="nat" src="../img/networkLayer/nat.png" /></p>
+<p><strong>how home network devices get the ip address</strong></p>
+<ul>
+<li>NAT router get ip address from ISP's DHCP server</li>
+<li>router runs DHCP server to provide addresses to computers within NAT-DHCP-router-controlled home network's address space</li>
+</ul>
+<p><strong>NAT Table</strong></p>
+<ul>
+<li>use to tell where/which host to forward given datagram<br />
+<strong>security</strong></li>
+<li><code>NAT</code> hiding details of home network from outside world</li>
+</ul>
+<p><strong>NAT face agues</strong></p>
+<ul>
+<li>port numbers are meant to be used for addressing processes, not for<br />
+addressing hosts</li>
+<li>routers<br />
+are supposed to process packets only up to layer 3</li>
+<li>NAT<br />
+protocol violates the so-called end-to-end argument</li>
+<li>we should use IPv6 to<br />
+solve the shortage of IP addresses, rather than recklessly patching up the problem<br />
+with a stopgap solution like NAT</li>
+</ul>
+<p><strong>problem with NAT in P2P application</strong></p>
+<ul>
+<li>P2P app : participating Peer A should be able to initiate TCP connection with other peer B</li>
+<li>problem is Peer B is behind NAT, it can't act as server and accept TCP connection</li>
+<li>this NAT problem can be circumvented if Peer A is not behind a NAT</li>
+<li>Peer A can first contact PeerB through an intermediate Peer C, which is not behind a NAT and to which B has<br />
+established an ongoing TCP connection.</li>
+<li>Peer A can then ask Peer B, via Peer C, to initiate a TCP connection directly back to Peer A.</li>
+<li>Once the direct P2P TCP connection is established between Peers A and B, the two peers can exchange messages or<br />
+files. This hack, called connection reversal<br />
+-</li>
+</ul>
+<h3 id="upnp-universal-plug-and-play"><strong>UPnP Universal Plug and Play</strong><a class="headerlink" href="#upnp-universal-plug-and-play" title="Permanent link">#</a></h3>
+<ul>
+<li>which is<br />
+a protocol that allows a host to discover and configure a nearby NAT</li>
+</ul>
+<h2 id="internet-control-message-protocol">Internet Control Message Protocol<a class="headerlink" href="#internet-control-message-protocol" title="Permanent link">#</a></h2>
+<ul>
+<li>use of ICMP is for error reporting.</li>
+<li>For example, when running a Telnet, FTP, or HTTP session,you may seen error message such as “Destination network unreachable.”</li>
+<li>CMP messages have</li>
+<li>type and a code field</li>
+<li>the header and the first 8 bytes of the IP datagram that caused the ICMP message to be generated in the<br />
+first place (so that the sender can determine the datagram that caused the error).</li>
+<li>ping program sends an ICMP type 8 code 0 message to the specified host.</li>
+<li><strong><em>source quench message</em></strong> : ts original purpose was to perform congestion control—<br />
+to allow a congested router to send an ICMP source quench message to a host to<br />
+force that host to reduce its transmission rate.</li>
+<li>Traceroute is implemented with ICMP messages. To determine the names and addresses of the routers<br />
+between source and destination</li>
+</ul>
+<p><img alt="IMCP" src="../img/networkLayer/ICMP.png" /></p>
+<h2 id="ipv6">IPv6<a class="headerlink" href="#ipv6" title="Permanent link">#</a></h2>
+<p><img alt="ipv6" src="../img/networkLayer/ipv6.png" /></p>
+<h3 id="how-will-public-internet-which-is-based-on-ipv4-transitioned-to-ipv6"><strong>how will public Internet, which is based on IPv4 transitioned to IPV6</strong><a class="headerlink" href="#how-will-public-internet-which-is-based-on-ipv4-transitioned-to-ipv6" title="Permanent link">#</a></h3>
+<p><strong>dual-stack approach</strong></p>
+<p><img alt="dualstack" src="../img/networkLayer/dualstack.png" /></p>
+<ul>
+<li>where IPv6 nodes also have a complete IPv4 implementation.<br />
+Such a node, referred to as an IPv6/IPv4 node</li>
+<li>has the ability to send and receive both IPv4 and IPv6 datagrams</li>
+<li>IPv6/IPv4 nodes must have both IPv6 and IPv4 addresses</li>
+<li>DNS which can return an IPv6 address if the node name being resolved is IPv6-capable, or other-<br />
+wise return an IPv4 address.</li>
+</ul>
+<p><strong>tunneling</strong><br />
+<img alt="tunnling" src="../img/networkLayer/tunneling.png" /></p>
+<h2 id="a-brief-foray-into-ip-security">A brief Foray into IP Security<a class="headerlink" href="#a-brief-foray-into-ip-security" title="Permanent link">#</a></h2>
+<ul>
+<li>One of these protocols is IPsec, one of the more popular secure network-layer protocols and also widely deployed in Virtual Private Networks (VPNs)</li>
+<li>if two hosts want to securely communicate, IPsec<br />
+needs to be available only in those two hosts. All other routers and hosts can continue to run vanilla IPv4.</li>
+<li>When two hosts have an IPsec session established between them, all TCP andUDP segments sent between them will be encrypted and authenticated</li>
+</ul>
+<p><strong>services provided by IPsec</strong></p>
+<ul>
+<li><strong>Cryptographic agreement</strong> Mechanisms that allow the two communicating hosts<br />
+to agree on cryptographic algorithms and keys.</li>
+<li><strong>Encryption of IP datagram payloads</strong>. When the sending host receives a segment<br />
+from the transport layer, IPsec encrypts the payload. The payload can only be<br />
+decrypted by IPsec in the receiving host</li>
+<li><strong>Data integrity</strong> IPsec allows the receiving host to verify that the datagram’s<br />
+header fields and encrypted payload were not modified while the datagram was<br />
+en route from source to destination.</li>
+<li><strong>Origin authentication</strong> When a host receives an IPsec datagram from a trusted<br />
+source, the host is assured that the source IP address in the datagram is the actual source of the datagram.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../" title="Networking" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Networking
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../osi/" title="OSI Model" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                OSI Model
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["navigation.expand", "tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
