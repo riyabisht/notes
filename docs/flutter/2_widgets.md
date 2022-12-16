@@ -23,11 +23,11 @@
 - this widget have only one child
 - To lay out muttl
 
-![container](./images/1container.png)
+![container](1container.png)
 
-![container](./images/3container.png)
+![container](3container.png)
 
-![container](./images/2container.png)
+![container](2container.png)
 
 - In order to embed container inside safe area hold down `Alt` `+` `ENTER` and select new widget and set as `SafeArea`
 
@@ -38,7 +38,7 @@ margin: EdgeInsets.symmetric(vertical: 40,horizontal: 50),
 padding: EdgeInsets.all(20.0)
 ```
 
-![margin](./images/14column.png)
+![margin](14column.png)
 
 ### Single child and multichild widgets
 
@@ -70,48 +70,48 @@ padding: EdgeInsets.all(20.0)
 
 mainAxis for column is vertical
 
-![column](./images/5column.png)
-![column](./images/6column.png)
+![column](5column.png)
+![column](6column.png)
 
 - `verticalDirection: VerticalDirection.up`
 
-![col](./images/column7.png)
+![col](column7.png)
 
 - `mainAxisAlignment: MainAxisAlignment.center`
 
-![col](./images/8column.png)
+![col](8column.png)
 
 - `mainAxisAlignment: MainAxisAlignment.spaceEvenly`
 
-![col](./images/9column.png)
+![col](9column.png)
 
 - `mainAxisAlignment: MainAxisAlignment.spaceBetween`
 
-![col](./images/column10.png)
+![col](column10.png)
 
 - `MainAxisAlignment: mainAxisAlignment.end`
 
-![col](./images/11column.png)
+![col](11column.png)
 
 - `crossAxisAlignment: CrossAxisAlignment.end`
 
-![col](./images/12column.png)
+![col](12column.png)
 
 - `crossAxisAlignment: CrossAxisAlignment.strech`
 
- ![col](./images/13column.png)
+ ![col](13column.png)
 
 - `doluble.infinity` inside container
 
- ![col](./images/14column.png)
+ ![col](14column.png)
 
 - `SizedBox(height :20.0)` - gives gap between container
 
- ![col](./images/15sizedBox.png)
+ ![col](15sizedBox.png)
 
 - all the wigets  are same for `Rows` as well
 
-![col](./images/14column.png)
+![col](14column.png)
 
 ```dart
 import 'package:flutter/cupertino.dart';

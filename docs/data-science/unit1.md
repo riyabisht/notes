@@ -48,9 +48,9 @@ print(class(complex_value)) // "complex"
 - Login operators (&,&&,|,||,!)
 - Miscellaneous operators
 
-![arithmetic operators](./img/2022-10-18-09-55-42.png)
-![Assignment operators](./img/2022-10-18-09-58-18.png)
-![Miscellaneous operators](./img/2022-10-18-10-00-53.png)
+![arithmetic operators](2022-10-18-09-55-42.png)
+![Assignment operators](2022-10-18-09-58-18.png)
+![Miscellaneous operators](2022-10-18-10-00-53.png)
 
 ## Loops
 
@@ -60,8 +60,8 @@ print(class(complex_value)) // "complex"
   - it has no condition to terminate loop
   - place condition within loop body and declare break
 
-![for loop](./img/2022-10-18-13-14-25.png)
-![while loop](./img/2022-10-18-13-14-58.png)
+![for loop](2022-10-18-13-14-25.png)
+![while loop](2022-10-18-13-14-58.png)
 ![repeat loop](2022-10-18-13-17-49.png)
 
 ## function in R

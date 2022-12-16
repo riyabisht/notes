@@ -147,18 +147,18 @@
   - Distributed - distributed data among the multiple nodes in cluster
   - Dataset - Collection of partitioned data with values
 
-![rdd](img/rdd.png)  
+![rdd](rdd.png)  
 
 - it is a layer of abstracted data over the distributed collection.
 - it is immutable in nature and follow lazy transformations.
 - immutability means that the state can't be modified later on,
   transformation is possible
 
-![](img/architecture.png)
+![](architecture.png)
 
 - block diagram
 
-![](img/blockdig.png)
+![](blockdig.png)
 
 - master node
   - driver program
@@ -310,24 +310,24 @@
     - `scala> val dfs = sqlcontext.read.json("employee.json")`
     - Output - The field names are taken automatically from employee.json.`
       - `dfs: org.apache.spark.sql.DataFrame = [age: string, id: string, name: string]`
-    - ![read.json](img/json.png)  
+    - ![read.json](json.png)  
   - Show the Data
     - If you want to see the data in the DataFrame, then use the following command.
     - `scala> df.show()`
     - Output - You can see the employee data in a tabular format.
-    - ![show](img/row.png)  
+    - ![show](row.png)  
   - Use printSchema Method
     - `scala> dfs.printSchema()`
-    - ![printSchema](img/schema.png)  
+    - ![printSchema](schema.png)  
   - use select method
     - `dfs.select("name").show()`
-    - ![select](img/col.png)  
+    - ![select](col.png)  
   - use filter
     - `dfs.filter(dfs("age") > 23).show()`
-    - ![filter](img/age.png)  
+    - ![filter](age.png)  
   - use groupby method
     - `dfs.groupBy("age").count().show()`
-    - ![gorupby](img/age2.png)  
+    - ![gorupby](age2.png)  
 
 ```scala
 spark-shell // will create a sc variable itself

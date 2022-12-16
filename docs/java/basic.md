@@ -41,8 +41,8 @@ int a,b,c;
 a=b=c=1;
 ```
 
-![datatypes](./img/2022-10-29-11-26-54.png)
-![type conversion](./img/2022-10-29-11-40-33.png)
+![datatypes](2022-10-29-11-26-54.png)
+![type conversion](2022-10-29-11-40-33.png)
 
 ## String methods
 
@@ -85,7 +85,7 @@ System.out.println(x+y); //1020
 
 - _non-access modifiers_
 
-![non-access modifiers](./img/2022-10-31-18-39-29.png)
+![non-access modifiers](2022-10-31-18-39-29.png)
 
 final class - can't be inherited
 abstract class - can't be used to create object , must be inherited
@@ -106,7 +106,7 @@ attribute or methods
 
 Build In
 
-![pakages](./img/2022-10-31-21-01-39.png)
+![pakages](2022-10-31-21-01-39.png)
 
 syntax
 

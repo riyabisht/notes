@@ -1,8 +1,4 @@
----
-title: Web Developement
----
-
-## Contents
+# Web Development
 
 - [[bootstrap]]
 - [[JavaScript]]

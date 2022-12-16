@@ -13,7 +13,7 @@ assets:
 
 - all set
 
-![doogo](./images/addImage.png)
+![doogo](addImage.png)
 
 ### Assert
 

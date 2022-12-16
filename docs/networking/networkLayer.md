@@ -13,7 +13,7 @@ Forwarding Table
 which that packet is to be forwarded.
 - Depending network-layer protocol,the header value could be the destination address or an indication of connection to which the packet belongs.
 
-![routing table](img/networkLayer/routing.png)
+![routing table](routing.png)
 
 ## Virtual-circuit and datagram
 
@@ -33,8 +33,8 @@ which that packet is to be forwarded.
 
 _Note : connection oriented service in transport layer different from network layer connection system_
 
-![vc](img/networkLayer/vc.png)
-![datagram](img/networkLayer/datagram.png)
+![vc](vc.png)
+![datagram](datagram.png)
 
 ## Internal of a Router
 
@@ -43,7 +43,7 @@ _Note : connection oriented service in transport layer different from network la
 - **forwarding**
 - **routing**
 
-![router](img/networkLayer/routerArchitecture.png)
+![router](routerArchitecture.png)
 
 **Input ports**
 
@@ -90,7 +90,7 @@ _network layer packet is referred as datagram_
 
 **syntax and semantics of IPv4 datagram format**
 
-![ipv4 format](img/networkLayer/ipv4format.png)
+![ipv4 format](ipv4format.png)
 
 _**Version number**_
 
@@ -177,9 +177,9 @@ _**Protocol**_
 - complicate routers and end system
 - can be used to create lethal DoS attacks, hacker send series of unexpected fragments eg: _Jolt2 attack_
 
-![fragmentation](img/networkLayer/fragmentation.png)
+![fragmentation](fragmentation.png)
 
-![fragment table](img/networkLayer/IpfragmentTabel.png)
+![fragment table](IpfragmentTabel.png)
 
 ## IPv4 Addressing
 
@@ -206,8 +206,8 @@ subnet: 223.1.1.0/24, where the /24 notation, sometimes known as a `subnet mask`
 (223.1.1.1, 223.1.1.2, and 223.1.1.3) <br>
 one router interface :(223.1.1.4).
 
-![subnet](img/networkLayer/subnet1.png)
-![subnet](img/networkLayer/subnet2.png)
+![subnet](subnet1.png)
+![subnet](subnet2.png)
 
 **_CIDR_**
 internet's address assignment strategy is known as `Classless Interdomain Routing`
@@ -253,11 +253,11 @@ When a host sends a datagram with destination address 255.255.255.255, the messa
 - each subnet has a DHCP server.If no server present on the subnet
 - DHPC relay agent that knows the address of DHPC server
 
-![DHPC](img/networkLayer/DHPC.png)
+![DHPC](DHPC.png)
 
 ### **DHPC is a 4 step process**
 
-![process](img/networkLayer/DHPC_process.png)
+![process](DHPC_process.png)
 
 **DHPC server discovery**
 
@@ -300,7 +300,7 @@ TCP connection to a remote app can be maintained as mobile node moves between su
 - because the receiving server won't know where to send information back. As device iP is private local .
 - NAT behaves like a single device with a single ip , for outside world
 
-![nat](img/networkLayer/nat.png)
+![nat](nat.png)
 
 **how home network devices get the ip address**
 
@@ -357,17 +357,17 @@ force that host to reduce its transmission rate.
 - Traceroute is implemented with ICMP messages. To determine the names and addresses of the routers
 between source and destination
 
-![IMCP](img/networkLayer/ICMP.png)
+![IMCP](ICMP.png)
 
 ## IPv6
 
-![ipv6](img/networkLayer/ipv6.png)
+![ipv6](ipv6.png)
 
 ### **how will public Internet, which is based on IPv4 transitioned to IPV6**
 
 **dual-stack approach**
 
-![dualstack](img/networkLayer/dualstack.png)
+![dualstack](dualstack.png)
 
 - where IPv6 nodes also have a complete IPv4 implementation.
 Such a node, referred to as an IPv6/IPv4 node
@@ -377,7 +377,7 @@ Such a node, referred to as an IPv6/IPv4 node
 wise return an IPv4 address.
 
 **tunneling**
-![tunnling](img/networkLayer/tunneling.png)
+![tunnling](tunneling.png)
 
 ## A brief Foray into IP Security
 

@@ -50,7 +50,7 @@ Classified in terms of 4v's
 
 ## Hadoop vs Spark
 
-![hadoop vs spark](./img/2022-10-16-11-16-14.png)
+![hadoop vs spark](2022-10-16-11-16-14.png)
 
 ## Spark Architecture
 
@@ -66,7 +66,7 @@ Classified in terms of 4v's
 - Distributed:Distributed data among the multiple nodes in a cluster
 - Dataset:Collection of partitioned data with values
 
-![RDDs](./img/2022-10-16-12-37-05.png)
+![RDDs](2022-10-16-12-37-05.png)
 
 - fundamental data structure of SPARK.
 - RDD can be `divided into multiple logical partitions` so that these  partitions can be stored and processed on different machines of a cluster
@@ -97,9 +97,9 @@ Limitation
 - No changes can be made in RDD once it is created
 - The run-time type safety is absent in RDDs.
 
-![spark architecture](./img/2022-10-16-13-25-09.png)
+![spark architecture](2022-10-16-13-25-09.png)
 
-![high-level view](./img/2022-10-16-13-37-31.png)
+![high-level view](2022-10-16-13-37-31.png)
 
 - master node have driver program which drive app.code we write behave as driver program or interactive shell if we are using it act as driver program.
 - inside drive program first we create spark context which act as gateway to all spark functionalities.similar to database connection.
@@ -113,7 +113,7 @@ RDD
 - using Transformation and action operation are performed in RDD and form new RDD
 - transformation are lazy in nature, which means computation are not done until we apply action.
 
-![operations on RDDs](./img/2022-10-17-17-56-17.png)
+![operations on RDDs](2022-10-17-17-56-17.png)
 
 ## Spark API
 
@@ -153,7 +153,7 @@ features
 
 ## RDD v/s Dataframe v/s Dataset
 
-![difference](./img/2022-10-20-05-26-03.png)
+![difference](2022-10-20-05-26-03.png)
 
 ## Reference
 

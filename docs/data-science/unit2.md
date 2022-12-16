@@ -53,7 +53,7 @@ suppose random variable $$X$$ may take all values over an interval of real numbe
 
 ### Types
 
-![types of missing values](./img/2022-10-18-14-18-01.png)
+![types of missing values](2022-10-18-14-18-01.png)
 
 - missing completely at random 
 - missing at random 
