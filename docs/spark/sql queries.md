@@ -102,7 +102,46 @@ df.orderBy(desc("count"), asc("DEST_COUNTRY_NAME")).show(2)
 ```
 
 ## types of join
-inner 
-outeer
-left
-right
+
+```
+val person = Seq(
+(0, "Bill Chambers", 0, Seq(100)),
+(1, "Matei Zaharia", 1, Seq(500, 250, 100)),
+(2, "Michael Armbrust", 1, Seq(250, 100)))
+.toDF("id", "name", "graduate_program", "spark_status"
+
+person.createOrReplaceTempView("person")
+```
+### inner 
+
+- the keys in both of the DataFrames or tables and include (and join together)
+- only the rows that evaluate to true.
+```  scala
+val joinExpression = person.col("graduate_program") === graduateProgram.col("id")
+var joinType = "inner"
+person.join(graduateProgram, joinExpression, joinType).show()
+```
+
+
+outer
+left outer join
+```scala
+graduateProgram.join(person, joinExpression, joinType).show()
+%%graduate program appers on left %% 
+
+
+```
+right outer join
+```scala
+joinType = "right_outer"
+person.join(graduateProgram, joinExpression, joinType).show()
+```
+left semi join
+
+```scala
+joinType = "left_semi"
+graduateProgram.join(person, joinExpression, joinType).show()
+```
+left anti 
+natural 
+cross
